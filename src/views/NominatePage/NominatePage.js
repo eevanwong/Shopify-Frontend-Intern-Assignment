@@ -45,7 +45,6 @@ export default function NominatePage() { //main page, holds all state to ensure 
         let savedNomin = {
             'nominations': nominations
         }
-        console.log('?')
         localStorage.setItem("nominations", JSON.stringify(savedNomin));
     }
 
@@ -65,8 +64,6 @@ export default function NominatePage() { //main page, holds all state to ensure 
                 }
               }));
         } else {
-            console.log(nominee);
-            console.log(nominations);
             setNominations([...nominations,nominee]);
         }
     }
@@ -104,11 +101,8 @@ export default function NominatePage() { //main page, holds all state to ensure 
         async function fetchData() {
             if (isInitialMount.current) {
                 isInitialMount.current = false;
-                if (localStorage.getItem('nominations')) {
-                    setNominations(JSON.parse(localStorage.getItem('nominations')).nominations)
-                } else {
-                    setNominations([]);
-                }
+                console.log(JSON.parse(localStorage.getItem('nominations')))
+                setNominations((JSON.parse(localStorage.getItem('nominations')).nominations) || []) 
             } else {
                 const url = `https://www.omdbapi.com/?s=${searchContent}&apikey=${process.env.REACT_APP_API_KEY}`
                 const response = await fetch(url);
@@ -119,6 +113,8 @@ export default function NominatePage() { //main page, holds all state to ensure 
         fetchData();
 
     },[searchContent])
+
+    console.log(nominations)
 
     return ( 
         // Entire app is encapsulated within a baselayout component, for consistent margins throughout pages

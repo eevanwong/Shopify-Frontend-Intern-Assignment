@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styles from './Item.module.css'
 
 export default function Item(props) {
-    // const [nominated, setNominated] = useState(false);
 
     return (
         <div className={(props.nominated) ? styles.nominated : ''}>
@@ -13,8 +12,8 @@ export default function Item(props) {
                     </h3>
                 </div>
                 {props.nominated ?
-                    <button disabled onClick={() => props.onClick(props)} className={styles.button}><img src={props.buttonText}></img></button>
-                    : <button onClick={() => props.onClick(props)} className={styles.button}><img src={props.buttonText}></img></button>
+                    <button disabled onClick={() => props.onClick(props)} className={styles.button}><img alt='button' src={props.buttonText}></img></button>
+                    : <button onClick={() => props.onClick(props)} className={styles.button}><img alt='button' src={props.buttonText}></img></button>
                 }
             </li>
         </div>
