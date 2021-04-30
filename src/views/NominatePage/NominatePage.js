@@ -38,7 +38,7 @@ export default function NominatePage() { //main page, holds all state to ensure 
             animationIn: ["animate__animated animate__fadeIn"], // `animate.css v4` classes
             animationOut: ["animate__animated animate__fadeOut"], // `animate.css v4` classes
             dismiss: {
-              duration: 2000,
+              duration: 2500,
               onScreen: false
             }
           }));
@@ -59,7 +59,7 @@ export default function NominatePage() { //main page, holds all state to ensure 
                 animationIn: ["animate__animated animate__fadeIn"], // `animate.css v4` classes
                 animationOut: ["animate__animated animate__fadeOut"], // `animate.css v4` classes
                 dismiss: {
-                  duration: 2000,
+                  duration: 2500,
                   onScreen: false
                 }
               }));
@@ -88,7 +88,7 @@ export default function NominatePage() { //main page, holds all state to ensure 
             animationIn: ["animate__animated animate__fadeIn"], // `animate.css v4` classes
             animationOut: ["animate__animated animate__fadeOut"], // `animate.css v4` classes
             dismiss: {
-              duration: 2000,
+              duration: 2500,
               onScreen: false
             }
           }));
@@ -101,8 +101,11 @@ export default function NominatePage() { //main page, holds all state to ensure 
         async function fetchData() {
             if (isInitialMount.current) {
                 isInitialMount.current = false;
-                console.log(JSON.parse(localStorage.getItem('nominations')))
-                setNominations((JSON.parse(localStorage.getItem('nominations')).nominations) || []) 
+                try {
+                    setNominations((JSON.parse(localStorage.getItem('nominations')).nominations)) 
+                } catch(err) {
+                    setNominations([])
+                } 
             } else {
                 const url = `https://www.omdbapi.com/?s=${searchContent}&apikey=${process.env.REACT_APP_API_KEY}`
                 const response = await fetch(url);
