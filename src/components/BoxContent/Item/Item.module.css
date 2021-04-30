@@ -15,10 +15,18 @@
     opacity: 0.3;
 }
 
-.button {
+.button, .imgicon{
     background-color: transparent;
     padding:0;
     border: none;
+}
+
+.imgicon {  
+    margin-right: 16px;
+}
+
+.imgicon img {
+    opacity: 0.8;
 }
 
 .button img {

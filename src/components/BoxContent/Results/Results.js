@@ -22,13 +22,14 @@ export default function Results(props) {
                 </h2>
             </div>
             <div className={styles.results}>
+                click on the img icon to view the poster
                 <ul>
                 <h3>{showResponse()}</h3>
                     {(results.Response !== "False" && results['Search'] !== undefined) && props.nominees !== null ?
                         <>
                         {results['Search'].map((results, i) => {
                             return (
-                                <Item key={i} imdbID={results.imdbID} nominated={props.nominees.some((ele) => { return ele.imdbID === results.imdbID })} buttonText={Add} onClick={props.onClick}>
+                                <Item key={i} imdbID={results.imdbID} poster={results.Poster} showImg={props.showImg} nominated={props.nominees.some((ele) => { return ele.imdbID === results.imdbID })} buttonText={Add} onClick={props.onClick}>
                                     {`${results.Title} (${results.Year})`}
                                 </Item>
                             )

@@ -12,10 +12,11 @@ export default function Nominate(props) {
                 </h2>
             </div>
             <div className={styles.results}>
+                click on the img icon to view its poster
                 <ul>
                     {(props.nominees.length !== 0) ? 
                     props.nominees.map((movie, i) => {
-                        return (<Item key={i} onClick={props.onClick} buttonText={Minus}>{(movie.children)}</Item>)
+                        return (<Item key={i} onClick={props.onClick} poster={movie.poster} showImg={props.showImg} buttonText={Minus}>{(movie.children)}</Item>)
                     })
 
                         : ''}

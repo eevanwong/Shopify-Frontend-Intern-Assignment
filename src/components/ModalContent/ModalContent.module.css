@@ -1,0 +1,37 @@
+.content {
+    width: 100%;
+    margin: 8px;
+    overflow-y: auto;
+}
+
+.topsection {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.topsection button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border:none;
+    background-color: transparent;
+}
+
+.topsection img {
+    width: 36px;
+    height: 36px;
+}
+
+.body {
+    margin-top:24px;
+    display: flex;
+    justify-content: space-around;
+
+}
+
+.body img {
+    width: 60%;
+    height: 60%;
+}
