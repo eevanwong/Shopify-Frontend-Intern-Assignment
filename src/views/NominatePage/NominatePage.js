@@ -50,7 +50,6 @@ export default function NominatePage() { //main page, holds all state to ensure 
     }
 
     const handleAdd = (nominee) => { //for search results components, clicking on button will add to nominations 
-        console.log(nominee)
         if (nominations.length === 5) { 
             store.removeNotification(prevNotification)
             setPrevNotification(store.addNotification({
@@ -66,6 +65,8 @@ export default function NominatePage() { //main page, holds all state to ensure 
                 }
               }));
         } else {
+            console.log(nominee);
+            console.log(nominations);
             setNominations([...nominations,nominee]);
         }
     }
@@ -103,7 +104,11 @@ export default function NominatePage() { //main page, holds all state to ensure 
         async function fetchData() {
             if (isInitialMount.current) {
                 isInitialMount.current = false;
-                setNominations(JSON.parse(localStorage.getItem('nominations')).nominations || []);
+                if (localStorage.getItem('nominations')) {
+                    setNominations(JSON.parse(localStorage.getItem('nominations')).nominations)
+                } else {
+                    setNominations([]);
+                }
             } else {
                 const url = `https://www.omdbapi.com/?s=${searchContent}&apikey=${process.env.REACT_APP_API_KEY}`
                 const response = await fetch(url);
@@ -114,8 +119,6 @@ export default function NominatePage() { //main page, holds all state to ensure 
         fetchData();
 
     },[searchContent])
-
-    console.log(nominations);
 
     return ( 
         // Entire app is encapsulated within a baselayout component, for consistent margins throughout pages
@@ -132,7 +135,6 @@ export default function NominatePage() { //main page, holds all state to ensure 
                     <Results input={searchContent} nominees={nominations} searchResults={searchresults} onClick={handleAdd}/>
                 </Box>
                 
-
                 <Box>
                     <div className={styles.boxcol}>
                         <Nominate nominees={nominations} onClick={handleDelete} onSave={handleSave} onDeleteAll={handleDeleteAll}/>

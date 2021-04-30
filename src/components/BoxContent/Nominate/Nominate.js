@@ -17,7 +17,7 @@ export default function Nominate(props) {
                     {(props.nominees.length !== 0) ? 
                     <>
                     {props.nominees.map((movie, i) => {
-                        return (<Item id={i} onClick={props.onClick} buttonText={Minus}>{(movie.children)}</Item>)
+                        return (<Item key={i} onClick={props.onClick} buttonText={Minus}>{(movie.children)}</Item>)
                     })
                     }
 
