@@ -26,6 +26,23 @@
   transition: 0.2s ease;
 }
 
+.banner {
+  flex: 1;
+  min-width: 25%;
+  max-width: 100%;
+  height: 100%;
+  background-color: #29A746;
+  color: white;
+  text-align: center;
+  margin: 12px;
+  padding: 16px 12px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1),
+    0 1px 1px 0 rgba(0, 0, 0, 0.09);
+  transition: 0.2s ease;
+}
+
+
 .box:hover,.box2:hover {
   box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.1),
   0 3px 3px 0 rgba(0, 0, 0, 0.09);
