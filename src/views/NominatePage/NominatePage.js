@@ -105,7 +105,7 @@ export default function NominatePage() { //main page, holds all state to ensure 
                 isInitialMount.current = false;
                 setNominations(JSON.parse(localStorage.getItem('nominations')).nominations || []);
             } else {
-                const url = `http://www.omdbapi.com/?s=${searchContent}&apikey=${process.env.REACT_APP_API_KEY}`
+                const url = `https://www.omdbapi.com/?s=${searchContent}&apikey=${process.env.REACT_APP_API_KEY}`
                 const response = await fetch(url);
                 const json = await response.json();
                 setSearchResults(json);
